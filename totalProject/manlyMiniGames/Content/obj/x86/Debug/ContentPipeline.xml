@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XnaContent xmlns:Pipeline="Microsoft.Xna.Framework.Content.Pipeline">
+  <Asset Type="Pipeline:BuildItemCollection">
+    <BuildSuccessful>true</BuildSuccessful>
+    <Settings>
+      <TargetPlatform>Windows</TargetPlatform>
+      <BuildConfiguration>Debug</BuildConfiguration>
+      <CompressContent>false</CompressContent>
+      <RootDirectory>C:\Users\Nathan DeGrand\Documents\GitHub\Manly-Mini-Games\totalProject\manlyMiniGames\Content\</RootDirectory>
+      <LoggerRootDirectory>C:\Users\Nathan DeGrand\Documents\GitHub\Manly-Mini-Games\totalProject\manlyMiniGames\</LoggerRootDirectory>
+      <IntermediateDirectory>C:\Users\Nathan DeGrand\Documents\GitHub\Manly-Mini-Games\totalProject\manlyMiniGames\Content\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>C:\Users\Nathan DeGrand\Documents\GitHub\Manly-Mini-Games\totalProject\manlyMiniGames\bin\x86\Debug\Content\</OutputDirectory>
+    </Settings>
+    <Assemblies>
+      <Assembly>
+        <Key>C:\Windows\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\3.1.0.0__6d5c3888ef60e27d\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
+        <Value>2010-12-24T13:34:58.3619022-06:00</Value>
+      </Assembly>
+    </Assemblies>
+  </Asset>
+</XnaContent>
