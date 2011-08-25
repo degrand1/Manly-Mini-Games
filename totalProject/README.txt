@@ -1,0 +1,1 @@
+Where the total progress of the project will be stored.

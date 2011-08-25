@@ -1,0 +1,1 @@
+Where the current week's progress will be stored.

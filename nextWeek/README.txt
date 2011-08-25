@@ -1,0 +1,1 @@
+Where next week's goal in the tutorials will be stored
