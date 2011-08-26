@@ -21,6 +21,8 @@ namespace manlyMiniGames
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
+        Player player;
+
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -36,7 +38,7 @@ namespace manlyMiniGames
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-
+            player = new Player();
             base.Initialize();
         }
 
@@ -50,6 +52,7 @@ namespace manlyMiniGames
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
+            player.LoadContent(this.Content);
         }
 
         /// <summary>
@@ -73,7 +76,7 @@ namespace manlyMiniGames
                 this.Exit();
 
             // TODO: Add your update logic here
-
+            player.Update(gameTime);
             base.Update(gameTime);
         }
 
@@ -86,7 +89,9 @@ namespace manlyMiniGames
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // TODO: Add your drawing code here
-
+            spriteBatch.Begin();
+            player.Draw(spriteBatch);
+            spriteBatch.End();
             base.Draw(gameTime);
         }
     }
