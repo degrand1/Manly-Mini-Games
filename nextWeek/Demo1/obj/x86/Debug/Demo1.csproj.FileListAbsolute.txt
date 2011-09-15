@@ -1,0 +1,7 @@
+C:\Users\Nathan DeGrand\Documents\GitHub\Manly-Mini-Games\current\Demo1\bin\x86\Debug\Demo1.exe
+C:\Users\Nathan DeGrand\Documents\GitHub\Manly-Mini-Games\current\Demo1\bin\x86\Debug\Demo1.pdb
+C:\Users\Nathan DeGrand\Documents\GitHub\Manly-Mini-Games\current\Demo1\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Nathan DeGrand\Documents\GitHub\Manly-Mini-Games\current\Demo1\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\Nathan DeGrand\Documents\GitHub\Manly-Mini-Games\current\Demo1\obj\x86\Debug\Demo1.exe
+C:\Users\Nathan DeGrand\Documents\GitHub\Manly-Mini-Games\current\Demo1\obj\x86\Debug\Demo1.pdb
+C:\Users\Nathan DeGrand\Documents\GitHub\Manly-Mini-Games\current\Demo1\bin\x86\Debug\Content\filler sheet.xnb
