@@ -1,1 +1,2 @@
 C:\Users\Nathan DeGrand\Documents\GitHub\Manly-Mini-Games\current\Demo1\Content\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Tom\Manly-Mini-Games\nextWeek\Demo1\Content\obj\x86\Debug\ResolveAssemblyReference.cache
