@@ -5,3 +5,10 @@ C:\Users\Nathan DeGrand\Documents\GitHub\Manly-Mini-Games\current\Demo1\obj\x86\
 C:\Users\Nathan DeGrand\Documents\GitHub\Manly-Mini-Games\current\Demo1\obj\x86\Debug\Demo1.exe
 C:\Users\Nathan DeGrand\Documents\GitHub\Manly-Mini-Games\current\Demo1\obj\x86\Debug\Demo1.pdb
 C:\Users\Nathan DeGrand\Documents\GitHub\Manly-Mini-Games\current\Demo1\bin\x86\Debug\Content\filler sheet.xnb
+C:\Users\Tom\Manly-Mini-Games\nextWeek\Demo1\bin\x86\Debug\Content\filler sheet.xnb
+C:\Users\Tom\Manly-Mini-Games\nextWeek\Demo1\bin\x86\Debug\Demo1.exe
+C:\Users\Tom\Manly-Mini-Games\nextWeek\Demo1\bin\x86\Debug\Demo1.pdb
+C:\Users\Tom\Manly-Mini-Games\nextWeek\Demo1\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Tom\Manly-Mini-Games\nextWeek\Demo1\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\Tom\Manly-Mini-Games\nextWeek\Demo1\obj\x86\Debug\Demo1.exe
+C:\Users\Tom\Manly-Mini-Games\nextWeek\Demo1\obj\x86\Debug\Demo1.pdb

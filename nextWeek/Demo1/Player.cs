@@ -12,6 +12,9 @@ namespace Demo1
 {
     class Player : Sprite
     {
+        # region Fields
+
+
         const int PLAYER_SPEED = 150;
         const String theAssetName = "filler sheet";
         const int MOVE_UP = -1;
@@ -20,15 +23,23 @@ namespace Demo1
         const int MOVE_LEFT = -1;
         const int SPRITE_WIDTH = 128;
         const int SPRITE_HEIGHT = 128;
+
         enum State
         {
             Walking
         }
+
         State currentState = State.Walking;
         Vector2 mSpeed = Vector2.Zero;
         Vector2 mDirection = Vector2.Zero;
 
         KeyboardState mPreviousKeyboardState;
+
+
+        # endregion
+
+        # region Update
+
 
         private void UpdateMovement(KeyboardState currentKeyboardState)
         {
@@ -71,5 +82,6 @@ namespace Demo1
             base.Update(gameTime, mSpeed, mDirection);
         }
 
+        # endregion
     }
 }
