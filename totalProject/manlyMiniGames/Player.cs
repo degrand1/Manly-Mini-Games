@@ -19,6 +19,10 @@ namespace manlyMiniGames
         const int MOVE_LEFT = -1;
         const int MOVE_RIGHT = 1;
 
+        List<Rocket> mRockets = new List<Rocket>();
+        const int ROCKET_SPEED = 200;
+        ContentManager mContentManager;
+
         //Movement Variables
         enum State
         {
@@ -32,8 +36,6 @@ namespace manlyMiniGames
         
         //Animation Variables
         const int X_FRAME_WIDTH = 128;
-        const int Y_FRAME_WIDTH = 128;
-        const int X_FRAME_HEIGHT = 128;
         const int Y_FRAME_HEIGHT = 128;
         int currentYFrame = 0;
         int currentXFrame = 0;
@@ -41,6 +43,13 @@ namespace manlyMiniGames
 
         public void LoadContent(ContentManager theContentManager)
         {
+            mContentManager = theContentManager;
+
+            foreach (Rocket aRocket in mRockets)
+            {
+                aRocket.LoadContent(theContentManager);
+            }
+
             source = new Rectangle(0, 0, X_FRAME_WIDTH, Y_FRAME_HEIGHT);
             base.LoadContent(theContentManager, theAssetName);
         }
@@ -83,18 +92,77 @@ namespace manlyMiniGames
                     mSpeed = Vector2.Zero;
                 }
             }
-        }
-        public void Update(GameTime theGameTime)
-        {
-            KeyboardState currentKeyboardState = Keyboard.GetState();
-            UpdateMovement(currentKeyboardState);
-            mPreviousKeyboardState = currentKeyboardState;
             if (directionChanged)
             {
                 source = new Rectangle(currentXFrame, currentYFrame, X_FRAME_WIDTH, Y_FRAME_HEIGHT);
                 directionChanged = false;
             }
+        }
+
+        private void UpdateRocket(GameTime theGameTime, KeyboardState theCurrentKeyboardState)
+        {
+            foreach (Rocket aRocket in mRockets)
+            {
+                aRocket.Update(theGameTime);
+            }
+
+            if(theCurrentKeyboardState.IsKeyDown(Keys.Z) && !mPreviousKeyboardState.IsKeyDown(Keys.Z)){
+                shootRocket();
+            }
+        }
+
+        private void shootRocket()
+        {
+            if (mCurrentState == State.Walking)
+            {
+                //Check if there are any invisible rockets in the list
+                bool createNewRocket = true;
+                Vector2 rocketDirection;
+                if (mDirection.X == MOVE_LEFT)
+                {
+                    rocketDirection = new Vector2(MOVE_LEFT, 0);
+                }
+                else
+                {
+                    rocketDirection = new Vector2(MOVE_RIGHT, 0);
+                }
+                foreach (Rocket aRocket in mRockets)
+                {
+                    if(!aRocket.visible){
+                        createNewRocket = false;
+                        aRocket.Fire(mPosition + new Vector2(rocketDirection.X*(X_FRAME_WIDTH / 2),0),
+                            new Vector2(ROCKET_SPEED, 0), rocketDirection);
+                        break;
+                    }
+                }
+
+                if (createNewRocket)
+                {
+                    Rocket aRocket = new Rocket();
+                    aRocket.LoadContent(mContentManager);
+                    aRocket.Fire(mPosition + new Vector2(rocketDirection.X*(X_FRAME_WIDTH / 2), 0),
+                            new Vector2(ROCKET_SPEED, 0), rocketDirection);
+                    mRockets.Add(aRocket);
+                }
+            }
+        }
+
+        public void Update(GameTime theGameTime)
+        {
+            KeyboardState currentKeyboardState = Keyboard.GetState();
+            UpdateMovement(currentKeyboardState);
+            UpdateRocket(theGameTime, currentKeyboardState);
+            mPreviousKeyboardState = currentKeyboardState;
+            
             base.Update(theGameTime, mSpeed, mDirection);
+        }
+        public void Draw(SpriteBatch theSpriteBatch)
+        {
+            foreach (Rocket aRocket in mRockets)
+            {
+                aRocket.Draw(theSpriteBatch);
+            }
+            base.Draw(theSpriteBatch);
         }
     }
 }

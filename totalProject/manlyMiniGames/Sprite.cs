@@ -26,7 +26,7 @@ namespace manlyMiniGames
             mPosition += theSpeed * theDirection * (float)theGameTime.ElapsedGameTime.TotalSeconds;
         }
         //Draws the sprite to the screen
-        public void Draw(SpriteBatch theSpriteBatch)
+        public virtual void Draw(SpriteBatch theSpriteBatch)
         {
             theSpriteBatch.Draw(mSpriteTexture, mPosition, source, Color.White);
         }
