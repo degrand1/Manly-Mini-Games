@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "manlyMiniGames", "manlyMiniGames.csproj", "{AF7EFC0A-432E-46AB-A417-5F446135942F}"
+EndProject
+Global
+	GlobalSection(SubversionScc) = preSolution
+		Svn-Managed = True
+		Manager = AnkhSVN - Subversion Support for Visual Studio
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AF7EFC0A-432E-46AB-A417-5F446135942F}.Debug|x86.ActiveCfg = Debug|x86
+		{AF7EFC0A-432E-46AB-A417-5F446135942F}.Debug|x86.Build.0 = Debug|x86
+		{AF7EFC0A-432E-46AB-A417-5F446135942F}.Release|x86.ActiveCfg = Release|x86
+		{AF7EFC0A-432E-46AB-A417-5F446135942F}.Release|x86.Build.0 = Release|x86
+		{618FC6A2-7641-4A7D-B9FC-ACD61F155BD9}.Debug|x86.ActiveCfg = Debug|x86
+		{618FC6A2-7641-4A7D-B9FC-ACD61F155BD9}.Release|x86.ActiveCfg = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

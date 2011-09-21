@@ -8,80 +8,161 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace Demo1
+namespace manlyMiniGames
 {
     class Player : Sprite
     {
-        # region Fields
-
-
-        const int PLAYER_SPEED = 150;
         const String theAssetName = "filler sheet";
+        const int PLAYER_SPEED = 150;
         const int MOVE_UP = -1;
         const int MOVE_DOWN = 1;
-        const int MOVE_RIGHT = 1;
         const int MOVE_LEFT = -1;
-        const int SPRITE_WIDTH = 128;
-        const int SPRITE_HEIGHT = 128;
+        const int MOVE_RIGHT = 1;
 
+        List<Rocket> mRockets = new List<Rocket>();
+        const int ROCKET_SPEED = 200;
+        ContentManager mContentManager;
+
+        //Movement Variables
         enum State
         {
             Walking
         }
-
-        State currentState = State.Walking;
+        State mCurrentState = State.Walking;
         Vector2 mSpeed = Vector2.Zero;
         Vector2 mDirection = Vector2.Zero;
 
         KeyboardState mPreviousKeyboardState;
+        
+        //Animation Variables
+        const int X_FRAME_WIDTH = 128;
+        const int Y_FRAME_HEIGHT = 128;
+        int currentYFrame = 0;
+        int currentXFrame = 0;
+        bool directionChanged = false;
 
-
-        # endregion
-
-        # region Update
-
-
-        private void UpdateMovement(KeyboardState currentKeyboardState)
+        public void LoadContent(ContentManager theContentManager)
         {
-            if (currentState == State.Walking)
+            mContentManager = theContentManager;
+
+            foreach (Rocket aRocket in mRockets)
             {
-                if (currentKeyboardState.IsKeyDown(Keys.Right))
+                aRocket.LoadContent(theContentManager);
+            }
+
+            source = new Rectangle(0, 0, X_FRAME_WIDTH, Y_FRAME_HEIGHT);
+            base.LoadContent(theContentManager, theAssetName);
+        }
+
+        //update the player's movement
+        private void UpdateMovement(KeyboardState currentKeyboardState){
+            if (mCurrentState == State.Walking)
+            {
+                //Update the direction of movement
+                if (currentKeyboardState.IsKeyDown(Keys.Right) && !currentKeyboardState.IsKeyDown(Keys.Left))
                 {
+                    //Wasn't look right before, but am now
                     if (mDirection.X != MOVE_RIGHT)
                     {
-                        source = new Rectangle(0, 2 * SPRITE_HEIGHT, SPRITE_WIDTH, SPRITE_HEIGHT);
+                        currentYFrame = 2 * Y_FRAME_HEIGHT;
+                        directionChanged = true;
                     }
                     mSpeed.X = PLAYER_SPEED;
                     mDirection.X = MOVE_RIGHT;
                 }
-                else if (currentKeyboardState.IsKeyDown(Keys.Left))
+                else if (currentKeyboardState.IsKeyDown(Keys.Left) && !currentKeyboardState.IsKeyDown(Keys.Right))
                 {
+                    //Wasn't looking left before, but am now
                     if (mDirection.X != MOVE_LEFT)
                     {
-                        source = new Rectangle(0, SPRITE_HEIGHT, SPRITE_WIDTH, SPRITE_HEIGHT);
+                        currentYFrame = 1 * Y_FRAME_HEIGHT;
+                        directionChanged = true;
                     }
                     mSpeed.X = PLAYER_SPEED;
                     mDirection.X = MOVE_LEFT;
                 }
+                else //Zero out the speed, the player isn't moving
+                {
+                    if (mDirection.X != 0)
+                    {
+                        currentYFrame = 0;
+                        directionChanged = true;
+                    }
+                    mDirection = Vector2.Zero;
+                    mSpeed = Vector2.Zero;
+                }
+            }
+            if (directionChanged)
+            {
+                source = new Rectangle(currentXFrame, currentYFrame, X_FRAME_WIDTH, Y_FRAME_HEIGHT);
+                directionChanged = false;
+            }
+        }
+
+        private void UpdateRocket(GameTime theGameTime, KeyboardState theCurrentKeyboardState)
+        {
+            foreach (Rocket aRocket in mRockets)
+            {
+                aRocket.Update(theGameTime);
+            }
+
+            if(theCurrentKeyboardState.IsKeyDown(Keys.Z) && !mPreviousKeyboardState.IsKeyDown(Keys.Z)){
+                shootRocket();
+            }
+        }
+
+        private void shootRocket()
+        {
+            if (mCurrentState == State.Walking)
+            {
+                //Check if there are any invisible rockets in the list
+                bool createNewRocket = true;
+                Vector2 rocketDirection;
+                if (mDirection.X == MOVE_LEFT)
+                {
+                    rocketDirection = new Vector2(MOVE_LEFT, 0);
+                }
                 else
                 {
-                    if (mDirection != Vector2.Zero)
-                    {
-                        source = new Rectangle(0, 0, SPRITE_WIDTH, SPRITE_HEIGHT);
+                    rocketDirection = new Vector2(MOVE_RIGHT, 0);
+                }
+                foreach (Rocket aRocket in mRockets)
+                {
+                    if(!aRocket.visible){
+                        createNewRocket = false;
+                        aRocket.Fire(mPosition + new Vector2(rocketDirection.X*(X_FRAME_WIDTH / 2),0),
+                            new Vector2(ROCKET_SPEED, 0), rocketDirection);
+                        break;
                     }
-                    mSpeed = Vector2.Zero;
-                    mDirection = Vector2.Zero;
+                }
+
+                if (createNewRocket)
+                {
+                    Rocket aRocket = new Rocket();
+                    aRocket.LoadContent(mContentManager);
+                    aRocket.Fire(mPosition + new Vector2(rocketDirection.X*(X_FRAME_WIDTH / 2), 0),
+                            new Vector2(ROCKET_SPEED, 0), rocketDirection);
+                    mRockets.Add(aRocket);
                 }
             }
         }
-        public void Update(GameTime gameTime)
+
+        public void Update(GameTime theGameTime)
         {
             KeyboardState currentKeyboardState = Keyboard.GetState();
             UpdateMovement(currentKeyboardState);
+            UpdateRocket(theGameTime, currentKeyboardState);
             mPreviousKeyboardState = currentKeyboardState;
-            base.Update(gameTime, mSpeed, mDirection);
+            
+            base.Update(theGameTime, mSpeed, mDirection);
         }
-
-        # endregion
+        public void Draw(SpriteBatch theSpriteBatch)
+        {
+            foreach (Rocket aRocket in mRockets)
+            {
+                aRocket.Draw(theSpriteBatch);
+            }
+            base.Draw(theSpriteBatch);
+        }
     }
 }

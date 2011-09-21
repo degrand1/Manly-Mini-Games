@@ -6,28 +6,29 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace Demo1
+namespace manlyMiniGames
 {
     class Sprite
     {
-        public Vector2 position = new Vector2(0, 0);
-        public Rectangle source = new Rectangle(0, 0, 128, 128);
-        private Texture2D texture;
-        
+        public Vector2 mPosition = new Vector2(0, 0);
+        public Rectangle source;
+        private Texture2D mSpriteTexture;
+
         //Load the texture for the sprite using the Content Pipeline
-        public void LoadContent(ContentManager theContentManager, string assetName)
+        public void LoadContent(ContentManager theContentManager, string theAssetName)
         {
-            texture = theContentManager.Load<Texture2D>(assetName);
+            mSpriteTexture = theContentManager.Load<Texture2D>(theAssetName);
         }
-        //Draw a sprite to the screen
-        public void Draw(SpriteBatch spriteBatch)
+
+        //Update the Sprite's position
+        public void Update(GameTime theGameTime, Vector2 theSpeed, Vector2 theDirection)
         {
-            spriteBatch.Draw(texture, position, source, Color.White);
+            mPosition += theSpeed * theDirection * (float)theGameTime.ElapsedGameTime.TotalSeconds;
         }
-        //Update the sprite
-        public void Update(GameTime gameTime, Vector2 speed, Vector2 direction)
+        //Draws the sprite to the screen
+        public virtual void Draw(SpriteBatch theSpriteBatch)
         {
-            position += speed * direction * (float)gameTime.ElapsedGameTime.TotalSeconds;
+            theSpriteBatch.Draw(mSpriteTexture, mPosition, source, Color.White);
         }
     }
 }

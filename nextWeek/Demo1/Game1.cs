@@ -11,7 +11,7 @@ using Microsoft.Xna.Framework.Media;
 using Microsoft.Xna.Framework.Net;
 using Microsoft.Xna.Framework.Storage;
 
-namespace Demo1
+namespace manlyMiniGames
 {
     /// <summary>
     /// This is the main type for your game
@@ -52,7 +52,7 @@ namespace Demo1
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
-            player.LoadContent(this.Content, "filler sheet");
+            player.LoadContent(this.Content);
         }
 
         /// <summary>
@@ -92,7 +92,6 @@ namespace Demo1
             spriteBatch.Begin();
             player.Draw(spriteBatch);
             spriteBatch.End();
-
             base.Draw(gameTime);
         }
     }
