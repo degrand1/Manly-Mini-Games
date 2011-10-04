@@ -5,3 +5,4 @@ C:\Users\Nathan DeGrand\Documents\GitHub\Manly-Mini-Games\totalProject\manlyMini
 C:\Users\Nathan DeGrand\Documents\GitHub\Manly-Mini-Games\totalProject\manlyMiniGames\obj\x86\Debug\manlyMiniGames.exe
 C:\Users\Nathan DeGrand\Documents\GitHub\Manly-Mini-Games\totalProject\manlyMiniGames\obj\x86\Debug\manlyMiniGames.pdb
 C:\Users\Nathan DeGrand\Documents\GitHub\Manly-Mini-Games\totalProject\manlyMiniGames\bin\x86\Debug\Content\filler sheet.xnb
+C:\Users\Nathan DeGrand\Documents\GitHub\Manly-Mini-Games\totalProject\manlyMiniGames\bin\x86\Debug\Content\RockeSheet.xnb
