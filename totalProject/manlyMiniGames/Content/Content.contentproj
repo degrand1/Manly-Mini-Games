@@ -45,8 +45,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="RockeSheet.png">
-      <Name>RockeSheet</Name>
+    <Compile Include="RocketSheet.png">
+      <Name>RocketSheet</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>

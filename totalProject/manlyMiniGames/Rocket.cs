@@ -33,7 +33,7 @@ namespace manlyMiniGames
         public static int FRAME_WIDTH = 128;
         public static int FRAME_HEIGHT = 128;
 
-        const String assetName = "RockeSheet";
+        const String assetName = "RocketSheet";
 
         public void LoadContent(ContentManager theContentManager)
         {
@@ -92,7 +92,7 @@ namespace manlyMiniGames
         public void Fire(Vector2 theStartPosition, Vector2 theSpeed, Vector2 theDirection)
         {
             currentYFrame = FRAME_HEIGHT;
-            if (theDirection.X == -1) //Moving left
+            if (theDirection.X == MOVE_LEFT )
                 currentXFrame = 0;
             else
                 currentXFrame = FRAME_WIDTH;

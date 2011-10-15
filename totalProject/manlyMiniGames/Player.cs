@@ -14,10 +14,6 @@ namespace manlyMiniGames
     {
         const String theAssetName = "filler sheet";
         const int PLAYER_SPEED = 150;
-        const int MOVE_UP = -1;
-        const int MOVE_DOWN = 1;
-        const int MOVE_LEFT = -1;
-        const int MOVE_RIGHT = 1;
 
         List<Rocket> mRockets = new List<Rocket>();
         const int ROCKET_SPEED = 200;

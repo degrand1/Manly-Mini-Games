@@ -10,6 +10,11 @@ namespace manlyMiniGames
 {
     class Sprite
     {
+        public const int MOVE_UP = -1;
+        public const int MOVE_DOWN = 1;
+        public const int MOVE_LEFT = -1;
+        public const int MOVE_RIGHT = 1;
+
         public Vector2 mPosition = new Vector2(0, 0);
         public Rectangle source;
         private Texture2D mSpriteTexture;

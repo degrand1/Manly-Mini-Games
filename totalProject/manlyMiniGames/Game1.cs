@@ -39,6 +39,10 @@ namespace manlyMiniGames
         {
             // TODO: Add your initialization logic here
             player = new Player();
+
+            Globals.screenWidth = graphics.GraphicsDevice.Viewport.Width;
+            Globals.screenHeight = graphics.GraphicsDevice.Viewport.Height;
+
             base.Initialize();
         }
 
