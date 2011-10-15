@@ -11,7 +11,7 @@ namespace manlyMiniGames
 {
     class Rocket : Sprite
     {
-        const int MAX_DISTANCE = 500;
+        const int MAX_DISTANCE = 7;
         float frameTimeElapsed = 0.0f;
         const float FRAME_TIME_TO_UPDATE = 0.0833f; // 12 frames per second
 
@@ -81,11 +81,11 @@ namespace manlyMiniGames
             }
         }
 
-        public override void Draw(SpriteBatch spriteBatch)
+        public override void Draw(SpriteBatch spriteBatch, Map map)
         {
             if (visible)
             {
-                base.Draw(spriteBatch);
+                base.Draw(spriteBatch, map);
             }
         }
 

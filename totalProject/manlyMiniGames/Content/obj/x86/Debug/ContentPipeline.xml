@@ -19,6 +19,15 @@
       <Output>C:\Users\Nathan DeGrand\Documents\GitHub\Manly-Mini-Games\totalProject\manlyMiniGames\bin\x86\Debug\Content\RocketSheet.xnb</Output>
       <Time>2011-09-19T11:08:14.7684635-05:00</Time>
     </Item>
+    <Item>
+      <Source>brick.png</Source>
+      <Name>brick</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Nathan DeGrand\Documents\GitHub\Manly-Mini-Games\totalProject\manlyMiniGames\bin\x86\Debug\Content\brick.xnb</Output>
+      <Time>2011-10-15T14:12:36.8832214-05:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <TargetPlatform>Windows</TargetPlatform>

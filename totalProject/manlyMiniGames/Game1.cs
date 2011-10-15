@@ -23,6 +23,8 @@ namespace manlyMiniGames
 
         Player player;
 
+        Map map;
+
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -39,6 +41,8 @@ namespace manlyMiniGames
         {
             // TODO: Add your initialization logic here
             player = new Player();
+
+            map = new Map();
 
             Globals.screenWidth = graphics.GraphicsDevice.Viewport.Width;
             Globals.screenHeight = graphics.GraphicsDevice.Viewport.Height;
@@ -57,6 +61,7 @@ namespace manlyMiniGames
 
             // TODO: use this.Content to load your game content here
             player.LoadContent(this.Content);
+            map.LoadContent(this.Content);
         }
 
         /// <summary>
@@ -80,7 +85,7 @@ namespace manlyMiniGames
                 this.Exit();
 
             // TODO: Add your update logic here
-            player.Update(gameTime);
+            player.Update(gameTime, map);
             base.Update(gameTime);
         }
 
@@ -94,7 +99,8 @@ namespace manlyMiniGames
 
             // TODO: Add your drawing code here
             spriteBatch.Begin();
-            player.Draw(spriteBatch);
+            map.Draw(spriteBatch);
+            player.Draw(spriteBatch, map);
             spriteBatch.End();
             base.Draw(gameTime);
         }

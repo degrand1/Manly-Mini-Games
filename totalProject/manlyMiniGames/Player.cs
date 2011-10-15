@@ -13,10 +13,13 @@ namespace manlyMiniGames
     class Player : Sprite
     {
         const String theAssetName = "filler sheet";
-        const int PLAYER_SPEED = 150;
+        const int PLAYER_SPEED = 7;
 
         List<Rocket> mRockets = new List<Rocket>();
-        const int ROCKET_SPEED = 200;
+        const int ROCKET_SPEED = 12;
+        const int X_ROCKET_OFFSET = 375;
+        const int Y_ROCKET_OFFSET = 225;
+
         ContentManager mContentManager;
 
         //Movement Variables
@@ -95,7 +98,7 @@ namespace manlyMiniGames
             }
         }
 
-        private void UpdateRocket(GameTime theGameTime, KeyboardState theCurrentKeyboardState)
+        private void UpdateRocket(GameTime theGameTime, KeyboardState theCurrentKeyboardState, Map map)
         {
             foreach (Rocket aRocket in mRockets)
             {
@@ -103,11 +106,11 @@ namespace manlyMiniGames
             }
 
             if(theCurrentKeyboardState.IsKeyDown(Keys.Z) && !mPreviousKeyboardState.IsKeyDown(Keys.Z)){
-                shootRocket();
+                shootRocket(map);
             }
         }
 
-        private void shootRocket()
+        private void shootRocket(Map map)
         {
             if (mCurrentState == State.Walking)
             {
@@ -122,12 +125,16 @@ namespace manlyMiniGames
                 {
                     rocketDirection = new Vector2(MOVE_RIGHT, 0);
                 }
+                Vector2 rocketStartPosition =
+                    map.screenToWorld(new Vector2(mPosition.X + rocketDirection.X * X_FRAME_WIDTH + X_ROCKET_OFFSET, 
+                        mPosition.Y + Y_ROCKET_OFFSET));
+
+                Vector2 rocketSpeed = new Vector2(ROCKET_SPEED, 0);
                 foreach (Rocket aRocket in mRockets)
                 {
                     if(!aRocket.visible){
                         createNewRocket = false;
-                        aRocket.Fire(mPosition + new Vector2(rocketDirection.X*(X_FRAME_WIDTH / 2),0),
-                            new Vector2(ROCKET_SPEED, 0), rocketDirection);
+                        aRocket.Fire(rocketStartPosition, rocketSpeed, rocketDirection);
                         break;
                     }
                 }
@@ -136,29 +143,31 @@ namespace manlyMiniGames
                 {
                     Rocket aRocket = new Rocket();
                     aRocket.LoadContent(mContentManager);
-                    aRocket.Fire(mPosition + new Vector2(rocketDirection.X*(X_FRAME_WIDTH / 2), 0),
-                            new Vector2(ROCKET_SPEED, 0), rocketDirection);
+                    aRocket.Fire(rocketStartPosition, rocketSpeed, rocketDirection);
                     mRockets.Add(aRocket);
                 }
             }
         }
 
-        public void Update(GameTime theGameTime)
+        public void Update(GameTime theGameTime, Map map)
         {
             KeyboardState currentKeyboardState = Keyboard.GetState();
             UpdateMovement(currentKeyboardState);
-            UpdateRocket(theGameTime, currentKeyboardState);
+            UpdateRocket(theGameTime, currentKeyboardState, map);
             mPreviousKeyboardState = currentKeyboardState;
-            
+
+            map.setViewPos(mPosition);
+
             base.Update(theGameTime, mSpeed, mDirection);
         }
-        public void Draw(SpriteBatch theSpriteBatch)
+
+        public override void Draw(SpriteBatch theSpriteBatch, Map map)
         {
             foreach (Rocket aRocket in mRockets)
             {
-                aRocket.Draw(theSpriteBatch);
+                aRocket.Draw(theSpriteBatch, map);
             }
-            base.Draw(theSpriteBatch);
+            base.Draw(theSpriteBatch, map);
         }
     }
 }

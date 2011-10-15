@@ -15,7 +15,7 @@ namespace manlyMiniGames
         public const int MOVE_LEFT = -1;
         public const int MOVE_RIGHT = 1;
 
-        public Vector2 mPosition = new Vector2(0, 0);
+        public Vector2 mPosition = new Vector2(8.0f, 56.0f);
         public Rectangle source;
         private Texture2D mSpriteTexture;
 
@@ -31,6 +31,15 @@ namespace manlyMiniGames
             mPosition += theSpeed * theDirection * (float)theGameTime.ElapsedGameTime.TotalSeconds;
         }
         //Draws the sprite to the screen
+        public virtual void Draw(SpriteBatch theSpriteBatch, Map map)
+        {
+            //Find the screen position for the texture
+            Vector2 scrpos = map.worldToScreen(mPosition);
+
+            //map.drawOnMap(theSpriteBatch, mSpriteTexture, mPosition, source);
+            theSpriteBatch.Draw(mSpriteTexture, scrpos, source, Color.White);
+        }
+
         public virtual void Draw(SpriteBatch theSpriteBatch)
         {
             theSpriteBatch.Draw(mSpriteTexture, mPosition, source, Color.White);
