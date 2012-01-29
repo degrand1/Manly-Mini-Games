@@ -1,0 +1,9 @@
+C:\Users\Nathan DeGrand\Documents\GitHub\ManlyBoundingBoxes\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Nathan DeGrand\Documents\GitHub\ManlyBoundingBoxes\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\Nathan DeGrand\Documents\GitHub\ManlyBoundingBoxes\bin\x86\Debug\Content\wall.xnb
+C:\Users\Nathan DeGrand\Documents\GitHub\ManlyBoundingBoxes\bin\x86\Debug\Content\paddle.xnb
+C:\Users\Nathan DeGrand\Documents\GitHub\ManlyBoundingBoxes\bin\x86\Debug\Content\ball.xnb
+C:\Users\Nathan DeGrand\Documents\GitHub\ManlyBoundingBoxes\bin\x86\Debug\ManlyBoundingBoxes.exe
+C:\Users\Nathan DeGrand\Documents\GitHub\ManlyBoundingBoxes\bin\x86\Debug\ManlyBoundingBoxes.pdb
+C:\Users\Nathan DeGrand\Documents\GitHub\ManlyBoundingBoxes\obj\x86\Debug\ManlyBoundingBoxes.exe
+C:\Users\Nathan DeGrand\Documents\GitHub\ManlyBoundingBoxes\obj\x86\Debug\ManlyBoundingBoxes.pdb
